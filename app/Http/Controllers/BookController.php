@@ -15,7 +15,13 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::all();
+
+        return view('book.index', [
+        'books' => $books, 
+        'authors' =>  $authors
+    ]);
+
     }
 
     /**
@@ -25,7 +31,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::orderBy('name')->get();
+        return view('book.create', ['authors' => $authors]);
     }
 
     /**
@@ -36,7 +43,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new Book;
+        $book->price = $request->book_price;
+       $book->isbn = $request->book_isbn;
+       $book->title = $request->book_title;
+       $book->category = $request->book_category;
+       $book->author_id = $request->author_id;
+       $book->save();
+       return redirect()->route('book.index')
+       ->with('success_message', 'Customer successfully created.');
     }
 
     /**
@@ -58,9 +73,9 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $authors = Author::all();
+        return view('book.edit', ['book' => $book, 'authors' => $authors]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -70,7 +85,14 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book->price = $request->book_price;
+        $book->isbn = $request->book_isbn;
+        $book->title = $request->book_title;
+        $book->category = $request->book_category;
+        $book->author_id = $request->author_id;
+        $book->save();
+        return redirect()->route('book.index')
+        ->with('success_message', 'Book successfully created.');
     }
 
     /**
@@ -81,6 +103,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()->route('book.index')
+        ->with('success_message', 'Book successfully deleted.');
     }
 }
