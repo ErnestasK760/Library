@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -14,7 +15,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::all();
+        return view('author.index', ['authors' => $authors]);
     }
 
     /**
@@ -24,7 +26,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('author.create');
     }
 
     /**
@@ -35,7 +37,12 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $author = new Author;
+        $author->name = $request->author_name;
+        $author->surname = $request->author_surname;
+        $author->save();
+        return redirect()->route('author.index')
+        ->with('success_message', 'Author successfully created.');
     }
 
     /**
@@ -57,7 +64,7 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('author.edit', ['author' => $author]);
     }
 
     /**
@@ -69,7 +76,12 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        
+        $author->name = $request->author_name;
+        $author->surname = $request->author_surname;
+        $author->save();
+        return redirect()->route('author.index')
+       ->with('success_message', 'Author successfully updated.');
     }
 
     /**
@@ -80,6 +92,12 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        if($author->authorCustomers->count()){
+            return redirect()->route('author.index')
+            ->with('info_message', 'Cannot delete author, because it has customers.');
+        }
+        $author->delete();
+        return redirect()->route('author.index')
+        ->with('success_message', 'Author succesfully deleted.');
     }
 }
