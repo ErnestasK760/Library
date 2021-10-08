@@ -37,11 +37,10 @@
                       <thead>
                           <tr>
                               <th>#</th>
-                              <th>Name</th>
-                              <th>Surname</th>
-                              <th>Phone</th>
-                              <th>Email</th>
-                              <th>Comment</th>
+                              <th>Title</th>
+                              <th>ISBN</th>
+                              <th>Price</th>
+                              <th>Category</th>
                               <th>Action</th>
                           </tr>
                       </thead>
@@ -49,11 +48,10 @@
                           <tr>
                             @foreach ($books as $key => $book)
                               <td>{{$key+1}}</td>
-                              <td>{{$book->name}}</td>
-                              <td>{{$book->surname}}</td>
-                              <td>{{$book->phone}}</td>
-                              <td>{{$book->email}}</td>
-                              <td><small>{!!$book->comment!!}<small></td>
+                              <td>{{$book->title}}</td>
+                              <td>{{$book->isbn}}</td>
+                              <td>{{$book->price}}</td>
+                              <td>{{$book->category}}</td>
                               <td>
                                 <div class="list-block">
                                   <ul class="action-list list-block__buttons">

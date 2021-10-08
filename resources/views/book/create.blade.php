@@ -12,32 +12,22 @@
                <div class="card-body">
                 <form method="POST" action="{{route('book.store')}}">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="book_name" value="{{old('book_name')}}">
-                        <small class="form-text text-muted">Book's name.</small>
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="book_title" value="{{old('book_title')}}">
+                        <small class="form-text text-muted">Book's title.</small>
                     </div>
                     <div class="form-group">
-                        <label>Surname</label>
-                        <input type="text" class="form-control" name="book_surname" value="{{old('book_surname')}}">
-                        <small class="form-text text-muted">Book's surname.</small>
+                        <label>Price</label>
+                        <input type="text" class="form-control" name="book_price" value="{{old('book_price')}}">
+                        <small class="form-text text-muted">Book's price.</small>
                     </div>
                     <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" name="book_phone" value="{{old('book_phone')}}">
-                        <small class="form-text text-muted">Book's phone number.</small>
+                        <label>Category</label>
+                        <input type="text" class="form-control" name="book_category" value="{{old('book_category')}}">
+                        <small class="form-text text-muted">Book's category.</small>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="book_email" value="{{old('book_email')}}">
-                        <small class="form-text text-muted">Book's email address.</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Comment</label>
-                        <textarea class="form-control" id="summernote" name="book_comment">{{old('book_comment')}}</textarea>
-                        <small class="form-text text-muted">Info about the book.</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Company</label>
+                        <label>Author</label>
                         <select class="form-control" name="author_id">
                         @foreach ($authors as $author)
             

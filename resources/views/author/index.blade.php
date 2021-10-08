@@ -33,7 +33,7 @@
                             @foreach ($authors as $key =>$author)
                               <td>{{$key+1}}</td>
                               <td>{{$author->name}}</td>
-                              <td>{{$author->address}}</td>
+                              <td>{{$author->surname}}</td>
                               <td>
                                 <div class="list-block">
                                   <ul class="action-list list-block__buttons">

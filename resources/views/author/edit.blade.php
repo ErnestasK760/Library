@@ -15,8 +15,8 @@
                         <small class="form-text text-muted">Enter new author name.</small>
                       </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" name="author_address" value="{{old('author_address',$author->address)}}">
+                        <label>Surname</label>
+                        <input type="text" class="form-control" name="author_surname" value="{{old('author_surname',$author->surname)}}">
                         <small class="form-text text-muted">Enter new author address.</small>
                     </div>
                     <div class="list-block">
