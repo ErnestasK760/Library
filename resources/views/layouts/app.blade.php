@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title','Kontaktai')</title>
+    <title>@yield('title','Knygos')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -144,11 +144,6 @@
         </main>
     </div>
 </div>
-    <footer class="py-4 bg-dark flex-shrink-0">
-        <div class="text-center">
-          <a href="https://bootstrapious.com/snippets" class="text-muted">Made by Ernestas Kapustinskas</a>
-        </div>
-    </footer>
 
 </body>
 </html>

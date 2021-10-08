@@ -23,15 +23,20 @@
                     </div>
                     <div class="form-group">
                         <label>Category</label>
-                        <input type="text" class="form-control" name="book_category" value="{{old('book_category')}}">
-                        <small class="form-text text-muted">Book's category.</small>
+                        <select class="form-control" name="book_category">
+                        @foreach ($categories as $category)
+            
+                            <option value="{{$category}}">{{$category}}</option>
+                        @endforeach
+                        </select>
+                        <small class="form-text text-muted">Select author from the list.</small>
                     </div>
                     <div class="form-group">
                         <label>Author</label>
                         <select class="form-control" name="author_id">
                         @foreach ($authors as $author)
             
-                            <option value="{{$author->id}}">{{$author->name}} {{$author->address}}</option>
+                            <option value="{{$author->id}}">{{$author->name}} {{$author->surname}}</option>
                         @endforeach
                         </select>
                         <small class="form-text text-muted">Select author from the list.</small>

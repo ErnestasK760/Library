@@ -10004,3 +10004,76 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.card-header {
+  color: #fff;
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+}
+.card-header fieldset {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 12px;
+  display: flex;
+}
+.card-header fieldset .block {
+  margin: 7px;
+}
+.card-header fieldset legend {
+  color: black;
+  font-size: 12px;
+  display: inline-block;
+  padding: 6px;
+  text-align: center;
+  width: auto;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.05), 0 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.list-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-block__buttons {
+  display: flex;
+}
+.list-block__content {
+  display: flex;
+  flex-direction: column;
+}
+.list-block__content small {
+  color: gray;
+  font-style: italic;
+  font-size: 70%;
+}
+
+.navbar {
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+}
+.navbar .navbar-toggler-icon {
+  color: #fff;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.fa-navicon {
+  color: #fff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Demo styling  */
+.btn_group {
+  color: #fff;
+}

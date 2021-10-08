@@ -19,12 +19,14 @@ class BookController extends Controller
      */
     public function index()
     {
+        $book = new Book;
         $books = Book::all();
         $authors = Author::all();
-
+        $categories = $book->categories();
         return view('book.index', [
             'books' => $books, 
             'authors' => $authors,
+            'categories' => $categories,
             'author_id' => $request->author_id ?? '0'
         ]);
     }
@@ -36,8 +38,10 @@ class BookController extends Controller
      */
     public function create()
     {
+        $book = new Book;
         $authors = Author::orderBy('name')->get();
-        return view('book.create', ['authors' => $authors]);
+        $categories = $book->categories();
+        return view('book.create', ['authors' => $authors,'categories' => $categories]);
     }
 
     /**
@@ -50,7 +54,7 @@ class BookController extends Controller
     {
         $book = new Book;
         $book->price = $request->book_price;
-       $book->isbn = $request->book_isbn;
+       $book->isbn = $book->generateISBN();
        $book->title = $request->book_title;
        $book->category = $request->book_category;
        $book->author_id = $request->author_id;
@@ -79,7 +83,8 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $authors = Author::all();
-        return view('book.edit', ['book' => $book, 'authors' => $authors]);
+        $categories = $book->categories();
+        return view('book.edit', ['book' => $book, 'authors' => $authors,'categories' => $categories]);
     }
     /**
      * Update the specified resource in storage.
@@ -91,13 +96,12 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $book->price = $request->book_price;
-        $book->isbn = $request->book_isbn;
         $book->title = $request->book_title;
         $book->category = $request->book_category;
         $book->author_id = $request->author_id;
         $book->save();
         return redirect()->route('book.index')
-        ->with('success_message', 'Book successfully created.');
+        ->with('success_message', 'Book successfully updated.');
     }
 
     /**

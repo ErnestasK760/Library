@@ -11,7 +11,7 @@
               <div class="panel-heading">
                   <div class="row">
                       <div class="col col-sm-3 col-xs-12">
-                          <h4 class="ml-2 title">Companies</h4>
+                          <h4 class="ml-2 title">Authors</h4>
                       </div>
                       <div class="col-sm-9 col-xs-12 text-right">
         
@@ -24,7 +24,7 @@
                           <tr>
                               <th>#</th>
                               <th>Name</th>
-                              <th>Address</th>
+                              <th>Surname</th>
                               <th>Action</th>
                           </tr>
                       </thead>
@@ -37,9 +37,9 @@
                               <td>
                                 <div class="list-block">
                                   <ul class="action-list list-block__buttons">
-                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-edit">Edit</a>
+                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-secondary">Edit</a>
                                     <form method="POST" action="{{route('author.destroy', $author)}}">
-                                    <button type="submit" class="btn btn-dang ml-3">Delete</button>
+                                    <button type="submit" class="btn btn-danger ml-3">Delete</button>
                                      @csrf
                                     </form>
                                       </li>
@@ -61,4 +61,4 @@
 </div>
 @endsection
 
-@section('title') Companies  @endsection
+@section('title') Authors  @endsection
