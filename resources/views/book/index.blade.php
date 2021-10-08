@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-
-@section('styled')
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+@section('css')
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 @endsection
 @section('content')
 <div class="container">
@@ -63,5 +62,12 @@
   </div>
 </div>
 @endsection
-
+@push('scripts')
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#datatable').DataTable();
+} );
+</script>
+@endpush
 @section('title') Books  @endsection
