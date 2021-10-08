@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,12 +20,13 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
+        $authors = Author::all();
 
         return view('book.index', [
-        'books' => $books, 
-        'authors' =>  $authors
-    ]);
-
+            'books' => $books, 
+            'authors' => $authors,
+            'author_id' => $request->author_id ?? '0'
+        ]);
     }
 
     /**

@@ -1,37 +1,64 @@
 @extends('layouts.app')
 
+@section('styled')
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="container">
-   <div class="row justify-content-center">
-       <div class="col-md-8">
-           <div class="card">
-               <div class="card-header"><h4>Edit company</h4></div>
-
-               <div class="card-body">
-                <form method="POST" action="{{route('company.update',$company)}}">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="company_name" value="{{old('company_name',$company->name)}}">
-                        <small class="form-text text-muted">Enter new company name.</small>
+  <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+          <div class="panel">
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col col-sm-3 col-xs-12">
+                          <h4 class="ml-2 title">Companies</h4>
                       </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" name="company_address" value="{{old('company_address',$company->address)}}">
-                        <small class="form-text text-muted">Enter new company address.</small>
-                    </div>
-                    <div class="list-block">
-                        <div class="list-block__buttons">
-                    <button type="submit" class="btn btn-update">Update Company</button>
-                         </div>
-                    </div>
-                    @csrf   
-                 </form>
-                
-               </div>
-           </div>
-       </div>
-   </div>
+                      <div class="col-sm-9 col-xs-12 text-right">
+        
+                      </div>
+                  </div>
+              </div>
+              <div class="panel-body table-responsive">
+                  <table class="table" id="datatable">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>Address</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            @foreach ($authors as $key =>$author)
+                              <td>{{$key+1}}</td>
+                              <td>{{$author->name}}</td>
+                              <td>{{$author->address}}</td>
+                              <td>
+                                <div class="list-block">
+                                  <ul class="action-list list-block__buttons">
+                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-edit">Edit</a>
+                                    <form method="POST" action="{{route('author.destroy', $author)}}">
+                                    <button type="submit" class="btn btn-dang ml-3">Delete</button>
+                                     @csrf
+                                    </form>
+                                      </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+              </div>
+              <div class="panel-footer">
+                  <div class="row">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 @endsection
 
-@section('title') Edit company  @endsection
+@section('title') Companies  @endsection
