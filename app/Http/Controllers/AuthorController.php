@@ -60,7 +60,7 @@ class AuthorController extends Controller
         $author->surname = $request->author_surname;
         $author->save();
         return redirect()->route('author.index')
-        ->with('success_message', 'Author successfully created.');
+        ->with('success_message', 'Author successfully assigned.');
     }
 
     /**
@@ -124,7 +124,7 @@ class AuthorController extends Controller
     {
         if($author->authorBooks->count()){
             return redirect()->route('author.index')
-            ->with('info_message', 'Cannot delete author, because it has customers.');
+            ->with('info_message', 'There is some books assigned to the author,cannot delete.');
         }
         $author->delete();
         return redirect()->route('author.index')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Validator;
 
 class BookController extends Controller
 {
@@ -18,7 +19,7 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $book = new Book;
         $books = Book::all();
         $authors = Author::all();
@@ -52,6 +53,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'book_title' => ['required','min:3','regex:/^([^0-9]*)$/'],
+            'book_price' => ['required','numeric'],
+
+        ],
+        [
+
+        ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $book = new Book;
         $book->price = $request->book_price;
        $book->isbn = $book->generateISBN();
@@ -60,7 +76,7 @@ class BookController extends Controller
        $book->author_id = $request->author_id;
        $book->save();
        return redirect()->route('book.index')
-       ->with('success_message', 'Customer successfully created.');
+       ->with('success_message', 'Book successfully assigned.');
     }
 
     /**
@@ -95,6 +111,22 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'book_title' => ['required','min:3','regex:/^([^0-9]*)$/'],
+            'book_price' => ['required','numeric'],
+
+        ],
+        [
+
+        ]
+        );
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+        
         $book->price = $request->book_price;
         $book->title = $request->book_title;
         $book->category = $request->book_category;
