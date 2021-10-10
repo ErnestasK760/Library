@@ -26,7 +26,7 @@
 }
 .list-block {
     display:flex;
-    justify-content:space-between;
+    justify-content: center;
     align-items: center;
     &__buttons {
         display:flex;
@@ -71,3 +71,22 @@ body {
 .btn_group {
     color:#fff;
 }
+.booktr,.authortr {
+    background: linear-gradient(to right, #2980b9, #2c3e50);
+    color:#fff;
+
+}
+.table {
+    text-align:center;
+}
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+.row {
+    justify-content: center;
+}
+// .authortr{
+//     background: linear-gradient(to right, #2980b9, #2c3e50);
+//     color:#fff;
+// }

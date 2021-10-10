@@ -20,10 +20,10 @@
                   </div>
               </div>
 
-              <div class="panel-body table-responsive">
+              <div class="panel-body table-responsive mx-auto">
                   <table class="table" id="datatable">
                       <thead>
-                          <tr>
+                          <tr class='booktr'>
                               <th>#</th>
                               <th>Title</th>
                               <th>ISBN</th>
@@ -38,7 +38,7 @@
                               <td>{{$key+1}}</td>
                               <td>{{$book->title}}</td>
                               <td>{{$book->isbn}}</td>
-                              <td>{{$book->price}}</td>
+                              <td>{{$book->price}} €</td>
                               <td>{{$book->category}}</td>
                               <td>
                                 <div class="list-block">

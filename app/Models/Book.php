@@ -16,7 +16,7 @@ class Book extends Model
 
     public function generateISBN()
     {
-        $isbn = "978-".rand(1,99999)."-".rand(1,9999999)."-".rand(10,999999)."-".rand(1,10);
+        $isbn = "978-".rand(11,99)."-".rand(1000,9999)."-".rand(100,999)."-".rand(0,9);
         return $isbn;
     }
     public function categories()

@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="container">
-  <div class="row">
+  <div class="row mx-auto">
       <div class="col-md-offset-1 col-md-10">
           <div class="panel">
               <div class="panel-heading">
@@ -21,7 +21,7 @@
               <div class="panel-body table-responsive">
                   <table class="table" id="datatable">
                       <thead>
-                          <tr>
+                          <tr class="authortr">
                               <th>#</th>
                               <th>Name</th>
                               <th>Surname</th>
@@ -29,21 +29,18 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <tr class="my-auto">
                             @foreach ($authors as $key =>$author)
                               <td>{{$key+1}}</td>
                               <td>{{$author->name}}</td>
                               <td>{{$author->surname}}</td>
                               <td>
                                 <div class="list-block">
-                                  <ul class="action-list list-block__buttons">
-                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-secondary">Edit</a>
                                     <form method="POST" action="{{route('author.destroy', $author)}}">
+                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-secondary">Edit</a>
                                     <button type="submit" class="btn btn-danger ml-3">Delete</button>
                                      @csrf
                                     </form>
-                                      </li>
-                                  </ul>
                                 </div>
                               </td>
                             </tr>
