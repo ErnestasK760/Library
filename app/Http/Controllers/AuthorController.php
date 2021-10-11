@@ -44,8 +44,8 @@ class AuthorController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'author_name' => ['required','min:3','regex:/^([^0-9]*)$/'],
-            'author_surname' => ['required','min:3','regex:/^([^0-9]*)$/'],
+            'author_name' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
+            'author_surname' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
         ],
          [
          ]
@@ -96,8 +96,8 @@ class AuthorController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'author_name' => ['required','min:3','regex:/^([^0-9]*)$/'],
-            'author_surname' => ['required','min:3','regex:/^([^0-9]*)$/'],
+            'author_name' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
+            'author_surname' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
         ],
          [
          ]
@@ -124,7 +124,7 @@ class AuthorController extends Controller
     {
         if($author->authorBooks->count()){
             return redirect()->route('author.index')
-            ->with('info_message', 'There is some books assigned to the author,cannot delete.');
+            ->with('info_message', 'There are some books assigned to this author, unable to delete.');
         }
         $author->delete();
         return redirect()->route('author.index')

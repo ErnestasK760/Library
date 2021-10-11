@@ -10087,11 +10087,15 @@ body {
   text-align: center;
 }
 
-td {
-  text-align: center;
+.row-center {
+  justify-content: center;
+}
+
+.table > tbody > tr > td {
   vertical-align: middle;
 }
 
-.row {
-  justify-content: center;
+.authortr {
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+  color: #fff;
 }

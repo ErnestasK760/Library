@@ -79,14 +79,17 @@ body {
 .table {
     text-align:center;
 }
-td {
-    text-align: center;
-    vertical-align: middle;
-}
-.row {
+// td {
+//     text-align: center;
+//     vertical-align: middle;
+// }
+.row-center {
     justify-content: center;
 }
-// .authortr{
-//     background: linear-gradient(to right, #2980b9, #2c3e50);
-//     color:#fff;
-// }
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+.authortr{
+    background: linear-gradient(to right, #2980b9, #2c3e50);
+    color:#fff;
+}

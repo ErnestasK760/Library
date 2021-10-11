@@ -56,7 +56,7 @@ class BookController extends Controller
         $validator = Validator::make($request->all(),
         [
             'book_title' => ['required','min:3','regex:/^([^0-9]*)$/'],
-            'book_price' => ['required','numeric'],
+            'book_price' => ['required','numeric','gt:0'],
 
         ],
         [
@@ -114,7 +114,7 @@ class BookController extends Controller
         $validator = Validator::make($request->all(),
         [
             'book_title' => ['required','min:3','regex:/^([^0-9]*)$/'],
-            'book_price' => ['required','numeric'],
+            'book_price' => ['required','numeric','gt:0'],
 
         ],
         [

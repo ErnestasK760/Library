@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-   <div class="row justify-content-center">
+   <div class="row justify-content-center row-center">
        <div class="col-md-8">
            <div class="card">
                <div class="card-header"><h4>Edit author</h4></div>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="list-block">
                         <div class="list-block__buttons">
-                    <button type="submit" class="btn btn-update">Update Author</button>
+                    <button type="submit" class="btn btn-primary">Update Author</button>
                          </div>
                     </div>
                     @csrf   

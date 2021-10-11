@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="container">
-  <div class="row mx-auto">
+  <div class="row mx-auto row-center">
       <div class="col-md-offset-1 col-md-10">
           <div class="panel">
               <div class="panel-heading">
@@ -25,6 +25,7 @@
                               <th>#</th>
                               <th>Name</th>
                               <th>Surname</th>
+                              <th>Books published</th>
                               <th>Action</th>
                           </tr>
                       </thead>
@@ -35,9 +36,16 @@
                               <td>{{$author->name}}</td>
                               <td>{{$author->surname}}</td>
                               <td>
+                                @if($author->authorBooks->count())
+                                Has {{$author->authorBooks->count()}} books published
+                                 @else
+                                Author has no books published
+                                 @endif
+                              </td>
+                              <td>
                                 <div class="list-block">
                                     <form method="POST" action="{{route('author.destroy', $author)}}">
-                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-secondary">Edit</a>
+                                    <a href="{{route('author.edit',[$author])}}" class ="btn btn-warning">Edit</a>
                                     <button type="submit" class="btn btn-danger ml-3">Delete</button>
                                      @csrf
                                     </form>

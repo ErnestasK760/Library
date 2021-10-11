@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="container">
-  <div class="row">
+  <div class="row row-center">
       <div class="col-md-offset-1 col-md-10">
           <div class="panel">
               <div class="panel-heading">
@@ -36,14 +36,14 @@
                           <tr>
                             @foreach ($books as $key => $book)
                               <td>{{$key+1}}</td>
-                              <td>{{$book->title}}</td>
+                              <td class='bookstd'>{{$book->title}}</td>
                               <td>{{$book->isbn}}</td>
                               <td>{{$book->price}} €</td>
                               <td>{{$book->category}}</td>
                               <td>
                                 <div class="list-block">
                                   <ul class="action-list list-block__buttons">
-                                      <a href="{{route('book.edit',[$book])}}" class ="btn btn-secondary">Edit</a>
+                                      <a href="{{route('book.edit',[$book])}}" class ="btn btn-warning">Edit</a>
                                       <form method="POST" action="{{route('book.destroy', [$book])}}">
                                       <button type="submit" class="btn btn-danger ml-3">Delete</button>
                                       @csrf

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-   <div class="row justify-content-center">
+   <div class="row justify-content-center row-center">
        <div class="col-md-8">
            <div class="card">
                <div class="card-header"><h4>Edit book<h4></div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="list-block">
                         <div class="list-block__buttons">
-                    <button type="submit" class="btn btn-update">Update Book</button>
+                    <button type="submit" class="btn btn-primary">Update Book</button>
                             </div>
                         </div>
                     @csrf
