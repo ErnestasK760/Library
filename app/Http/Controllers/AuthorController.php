@@ -42,14 +42,14 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'author_name' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
-            'author_surname' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
-        ],
-         [
-         ]
-         );
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'author_name' => ['required', 'string', 'min:3', 'max:16', 'regex:/^([^0-9]*)$/'],
+                'author_surname' => ['required', 'string', 'min:3', 'max:16', 'regex:/^([^0-9]*)$/'],
+            ],
+            []
+        );
         if ($validator->fails()) {
             $request->flash();
             return redirect()->back()->withErrors($validator);
@@ -60,7 +60,7 @@ class AuthorController extends Controller
         $author->surname = $request->author_surname;
         $author->save();
         return redirect()->route('author.index')
-        ->with('success_message', 'Author successfully assigned.');
+            ->with('success_message', 'Author successfully assigned.');
     }
 
     /**
@@ -94,24 +94,24 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'author_name' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
-            'author_surname' => ['required','string','min:3','max:16','regex:/^([^0-9]*)$/'],
-        ],
-         [
-         ]
-         );
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'author_name' => ['required', 'string', 'min:3', 'max:16', 'regex:/^([^0-9]*)$/'],
+                'author_surname' => ['required', 'string', 'min:3', 'max:16', 'regex:/^([^0-9]*)$/'],
+            ],
+            []
+        );
         if ($validator->fails()) {
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
-        
+
         $author->name = $request->author_name;
         $author->surname = $request->author_surname;
         $author->save();
         return redirect()->route('author.index')
-       ->with('success_message', 'Author successfully updated.');
+            ->with('success_message', 'Author successfully updated.');
     }
 
     /**
@@ -122,12 +122,12 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        if($author->authorBooks->count()){
+        if ($author->authorBooks->count()) {
             return redirect()->route('author.index')
-            ->with('info_message', 'There are some books assigned to this author, unable to delete.');
+                ->with('info_message', 'There are some books assigned to this author, unable to delete.');
         }
         $author->delete();
         return redirect()->route('author.index')
-        ->with('success_message', 'Author succesfully deleted.');
+            ->with('success_message', 'Author succesfully deleted.');
     }
 }

@@ -35,7 +35,8 @@ Route::group(['prefix' => 'authors'], function(){
     Route::post('delete/{book}', [BookController::class, 'destroy'])->name('book.destroy');
     Route::get('show/{book}', [BookController::class, 'show'])->name('book.show');
  });
-
+ 
+// Auth::routes(['register' => false]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

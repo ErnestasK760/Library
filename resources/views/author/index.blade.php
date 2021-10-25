@@ -37,7 +37,7 @@
                               <td>{{$author->surname}}</td>
                               <td>
                                 @if($author->authorBooks->count())
-                                Has {{$author->authorBooks->count()}} books published
+                                Author has {{$author->authorBooks->count()}} books published
                                  @else
                                 Author has no books published
                                  @endif
